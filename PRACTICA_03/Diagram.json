@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "author": "Pedro Manuel Cervantes Ju\ufffdrez",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay1", "top": 19.4, "left": 172.8, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay2", "top": 105.8, "left": 172.8, "attrs": {} },
+    { "type": "wokwi-relay-module", "id": "relay3", "top": 192.2, "left": 172.8, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 82.8,
+      "left": 387.8,
+      "attrs": { "color": "blue" }
+    },
+    { "type": "wokwi-led", "id": "led2", "top": 188.4, "left": 407, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 82.8,
+      "left": 426.2,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": 326.4,
+      "attrs": { "value": "220000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 147.95,
+      "left": 326.4,
+      "attrs": { "value": "220000" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r3",
+      "top": 186.35,
+      "left": 326.4,
+      "attrs": { "value": "220000" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "ntc1",
+      "top": -74.2,
+      "left": 306.6,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "relay1:VCC", "esp:5V", "red", [ "h-48", "v182.4", "h-124.8", "v-19.2" ] ],
+    [ "relay3:VCC", "esp:5V", "red", [ "h-28.8", "v9.6", "h-144" ] ],
+    [ "relay2:VCC", "esp:5V", "red", [ "h-48", "v96", "h-124.8" ] ],
+    [ "relay1:GND", "esp:GND.2", "black", [ "h-28.8", "v-19.6" ] ],
+    [ "relay2:GND", "esp:GND.2", "black", [ "h-28.8", "v-106" ] ],
+    [ "relay3:GND", "esp:GND.2", "black", [ "h-28.8", "v-192.4" ] ],
+    [ "relay1:IN", "esp:25", "green", [ "h-19.2", "v-67.4", "h-163.2", "v115.2" ] ],
+    [ "relay2:IN", "esp:26", "green", [ "h-9.6", "v-163.4", "h-182.4", "v134.4" ] ],
+    [ "relay3:IN", "esp:27", "green", [ "h-182.4", "v-105.8" ] ],
+    [ "relay1:COM", "esp:5V", "green", [ "h30", "v219.4", "h-9.6" ] ],
+    [ "relay2:COM", "esp:5V", "green", [ "h30", "v133", "h-307.2" ] ],
+    [ "relay3:COM", "esp:5V", "green", [ "h30", "v46.6", "h-307.2" ] ],
+    [ "led2:C", "esp:GND.2", "green", [ "v48", "h-306.8", "v-249.6" ] ],
+    [ "led1:C", "esp:GND.2", "green", [ "v153.6", "h-287.6", "v-249.6" ] ],
+    [ "led3:C", "esp:GND.2", "green", [ "v19.2", "h-38", "v134.4", "h-288", "v-249.6" ] ],
+    [ "r3:1", "relay3:NO", "green", [ "v0" ] ],
+    [ "r3:2", "led3:A", "green", [ "v0", "h66" ] ],
+    [ "r2:1", "relay2:NO", "green", [ "v0" ] ],
+    [ "r2:2", "led1:A", "green", [ "v0", "h37.2" ] ],
+    [ "r1:1", "relay1:NO", "green", [ "v0" ] ],
+    [ "r1:2", "led2:A", "green", [ "v-48", "h85.2", "v153.6" ] ],
+    [ "ntc1:GND", "esp:GND.2", "black", [ "h0", "v-38.4", "h-336" ] ],
+    [ "ntc1:VCC", "esp:3V3", "red", [ "h9.6", "v-67.2", "h-374.4" ] ],
+    [ "ntc1:OUT", "esp:34", "green", [ "h0" ] ]
+  ],
+  "dependencies": {}
+}
